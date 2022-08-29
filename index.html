@@ -1,0 +1,186 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>二进制安全</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-transition="fade" data-background-color="#dddddd">
+					<h2>二进制安全</h2>
+					<p>Neptune</p>
+				</section>
+
+				<section>
+					<section data-transition="fade" >
+						<h2>Binary-safe</h2>
+						<p>二进制安全是一种主要用于字符串操作函数相关的计算机编程术语。一个二进制安全功能（函数），其本质上将操作输入作为原始的、无任何特殊格式意义的数据流。其在操作上应包含一个字符所能有的256种可能的值（假设为8为字符）。</p>
+					</section>
+					
+
+					<section data-transition="fade" data-background-color="#dddddd">
+						<h2>Reverse</h2>
+					</section>
+
+					<section data-markdown>
+						<script type="text/template">
+							## Reverse（逆向）-背景知识
+							* 针对二进制程序（非源码、什么是二进制程序?）
+							* 对程序的逻辑进行分析
+							* 辅助相关研究
+							![re](./img/1.png)
+						</script>
+					</section>
+					
+					<section data-markdown>
+						<script type="text/template">
+							## Reverse
+							![re](./img/2.png)
+						</script>
+					</section>
+
+					<section data-markdown>
+						<script type="text/template">
+							### Reverse-基础知识
+							* C语言/汇编基础，同Pwn的学习方法但是逆向要求对汇编的理解力要强于Pwn
+							* 一定的算法基础，对算法本身的要求比较低，但要知道一些算法的C语言/汇编实现
+							* 熟悉不同平台下的可执行文件格式（PE，ELF，Mach-O，Java， Android，Flash，Python 等）
+							* 常见工具的使用（IDA、gdb、windbg···）
+						</script>
+					</section>
+
+					<section data-markdown>
+						<script type="text/template">
+							### Reverse-静态分析
+							这里给出一个逆向的实例
+							* `.apk`文件实际上是一个压缩包文件，只要使用解压软 件就能将其中的资源文件解压出来 
+							* 主程序(`.dex`)就是由java编译而成的
+							![re](./img/3.png)
+							
+						</script>
+					</section>
+
+					<section data-markdown>
+						<script type="text/template">
+							![re](./img/4.png)
+						</script>
+					</section>
+
+					<section data-markdown>
+						<script type="text/template">
+							### Reverse-动态分析
+							辅助分析程序，对于加壳，混淆之类的程序有奇效 
+							* 常用的工具： 
+								* Windows: Ollydbg(OD), Windbg, x64dbg 
+								* Linux: gdb
+							<br/>
+							<img src="./img/5.png" alt="4" width="600" height="350" />
+						</script>
+					</section>
+					
+					<section data-markdown>
+						<script type="text/template">
+							### 研究方向
+							* 漏洞挖掘(辅助Pwn继续逻辑分析)
+							* 病毒研究
+							* 安全防护 
+							* 外挂与反外挂 
+							* 注册机
+							<br/>
+							<img src="./img/6.png" alt="4" width="800" height="300" />
+						</script>
+					</section>
+
+					<section data-markdown>
+						<script type="text/template">
+							![re](./img/7.png)
+						</script>
+					</section>
+
+					<section data-transition="fade" data-background-color="#dddddd">
+						<h2>PWN</h2>
+					</section>
+
+					<section data-markdown>
+						<script type="text/template">
+							### PWN
+							"Pwn"是一个黑客语法的俚语词，是指攻破设备或者系统 。发音类似"砰"，对黑客而言，这就是成功实施黑客攻击的声音——砰的一声，被"黑"的电脑或手机就被你操纵了。
+							在CTF比赛中泛指二进制漏洞挖掘与利用，例如静态分析与动态调试技术结合理解程序的行为，找到并利用漏洞从而`getshell`。
+							![re](./img/8.jpg)
+						</script>
+					</section>
+
+					<section data-markdown>
+						<script type="text/template">
+							PWN的过程
+							* 漏洞：即超出程序作者考虑外的操作，一般为读写漏洞。 
+							* 挖掘：也就是发现，现代一般通过fuzz(启发式穷举)。 
+							* 利用：也是ctf比赛中pwn的主要考察方面，通过漏洞达到自己的目的，在比赛中通常为getshell。
+						</script>
+					</section>
+
+					<section data-markdown>
+						<script type="text/template">
+							![re](./img/9.png)
+						</script>
+					</section>
+
+					<section data-markdown>
+						<script type="text/template">
+							![re](./img/10.png)
+						</script>
+					</section>
+
+					<section data-markdown>
+						<script type="text/template">
+							研究方向
+							* 栈溢出、堆漏洞
+							* IO/输入输出函数漏洞
+							* IoT
+							* 内核漏洞(window、linux等)
+							* 虚拟机漏洞
+							* 浏览器漏洞
+						</script>
+					</section>
+
+					<section data-markdown>
+						<script type="text/template">
+							饭美美售货机
+							![re](./img/11.png)
+						</script>
+					</section>
+				</section>
+
+				<section data-markdown data-transition="fade" data-background-color="#dddddd">
+					<script type="text/template">
+						![re](./img/12.png)
+						#### 学妹（学弟）快来入坑
+						
+					</script>
+				</section>
+
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
